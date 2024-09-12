@@ -3,20 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Call Button</title>
+    <title>My Phone Number</title>
     <style>
-        .whatsapp-button img {
-            width: 50px; /* Adjust the size of the image */
-            height: auto;
-            border-radius: 10px; /* Optional: Rounds the corners of the image */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 40px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .phone-number {
+            font-size: 32px;
+            margin-bottom: 30px;
+            letter-spacing: 3px;
+            font-weight: bold;
+        }
+
+        .call-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .call-btn:hover {
+            background-color: #218838;
         }
     </style>
 </head>
 <body>
+    <!-- Ad section -->
 
-<a href="https://wa.me/15551234567?call" class="whatsapp-button" target="_blank">
-    <img src="https://your-image-url.com/whatsapp-icon.png" alt="Call us on WhatsApp">
-</a>
 
+    <div class="container">
+        <h1>Call Me Now!</h1>
+        <div class="phone-number" id="phoneNumber">Loading...</div>
+        <a href="https://redirecting-kappa.vercel.app/" class="call-btn" id="callBtn">Call Me</a>
+    </div>
+
+    <script>
+        // Function to generate a random 11-digit phone number
+        function generatePhoneNumber() {
+            let phoneNumber = "";
+            for (let i = 0; i < 11; i++) {
+                phoneNumber += Math.floor(Math.random() * 10);
+            }
+
+            // Hide some digits (randomly chosen 4 digits)
+            let hiddenPhone = phoneNumber.split('');
+            let indicesToHide = [];
+
+            // Randomly pick 4 indices to hide
+            while (indicesToHide.length < 4) {
+                let randIndex = Math.floor(Math.random() * 11);
+                if (!indicesToHide.includes(randIndex)) {
+                    indicesToHide.push(randIndex);
+                }
+            }
+
+            indicesToHide.forEach(index => {
+                hiddenPhone[index] = '*';
+            });
+
+            return hiddenPhone.join('');
+        }
+
+        // Update the phone number on the page
+        document.getElementById('phoneNumber').innerText = generatePhoneNumber();
+
+        // Redirect when Call Me button is clicked
+        document.getElementById('callBtn').addEventListener('click', function () {
+            // Redirect to a specific URL
+            window.location.href = 'https://redirecting-kappa.vercel.app/'; // Change this to your desired link
+        });
+    </script>
+<script type='text/javascript' src='//padsims.com/7a/4e/0b/7a4e0babdd976843aabb0e9297838e46.js'></script>
 </body>
 </html>
